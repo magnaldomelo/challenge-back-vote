@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "59621a98-ff1b-4831-b967-672df57a34d2",
+		"name": "desafio_south",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3936643"
+	},
+	"item": [
+		{
+			"name": "valid_cpf",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "saveAgenda",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAllAgenda",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAgendaById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateAgenda",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deleteById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "saveSection",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSection",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSectionById",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateSection",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"agendaId\": \"6429b80c4c41a40daf3a6f1f\",\r\n    \"minutesToFinish\": 5,\r\n    \"cloused\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/642a6383a27c5e7f85bdcee9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"642a6383a27c5e7f85bdcee9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteById",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"agendaId\": \"6429b80c4c41a40daf3a6f1f\",\r\n    \"minutesToFinish\": 5,\r\n    \"cloused\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/642a6383a27c5e7f85bdcee9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"642a6383a27c5e7f85bdcee9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vote",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"agendaId\": \"6429b80c4c41a40daf3a6f1f\",\r\n    \"minutesToFinish\": 5,\r\n    \"cloused\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/section/642a6383a27c5e7f85bdcee9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"section",
+						"642a6383a27c5e7f85bdcee9"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
