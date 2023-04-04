@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-alpine
+FROM amazoncorretto:11
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
