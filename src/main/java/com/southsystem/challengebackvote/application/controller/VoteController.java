@@ -22,7 +22,7 @@ import static org.springframework.http.ResponseEntity.created;
 
 @Slf4j
 @RestController
-@RequestMapping("vote")
+@RequestMapping("/api/v1/vote")
 @AllArgsConstructor
 public class VoteController {
 

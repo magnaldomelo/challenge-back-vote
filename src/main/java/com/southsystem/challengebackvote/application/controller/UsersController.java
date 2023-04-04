@@ -18,7 +18,7 @@ import static net.logstash.logback.marker.Markers.append;
 
 @Slf4j
 @RestController
-@RequestMapping("users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UsersController {
 
@@ -30,17 +30,9 @@ public class UsersController {
 
     @PostMapping("valid_cpf/{cpf}")
     private ResponseEntity<UsersApiResponse> validUser(@PathVariable("cpf") String cpf){
-        customStopWatch.start();
+        usersService.validCpf(cpf);
 
-        var userValid = usersService.validCpf(cpf);
-
-        var response = UsersApiResponse.builder().value(userValid.getValue()).build();
-
-        log.info(append(ACTION_LOG, "Desafio back votos - Users")
-                .and(append(REQUEST_LOG, "cpf: " + cpf))
-                .and(append(RESPONSE_LOG, response))
-                .and(append(RESPONSE_TIME, customStopWatch.getTotalTimeMillis()))
-                , "Desafio back votos - Users finished successfully");
+        var response = UsersApiResponse.builder().build();
 
         return ok(response);
     }

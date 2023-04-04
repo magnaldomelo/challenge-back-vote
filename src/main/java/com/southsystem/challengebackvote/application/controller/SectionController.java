@@ -23,7 +23,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @Slf4j
 @RestController
-@RequestMapping("section")
+@RequestMapping("/api/v1/section")
 @AllArgsConstructor
 @NoArgsConstructor
 public class SectionController {
