@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
@@ -64,10 +63,6 @@ public class SectionServiceImpl implements SectionService {
         return this.sectionRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    /*@Cacheable(
-            value = "section",
-            unless = "#result == null",
-            key = "'challenge-back-vote.SectionService.getSectionById' + '-' + #id")*/
     @Override
     public Section getSectionById(String id) {
         var section = this.sectionRepository.findById(id);

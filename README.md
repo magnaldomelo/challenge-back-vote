@@ -61,6 +61,8 @@ Caso deseje rodar apenas os testes:
 
 - mvn test
 
+Há uma arquivo criado no Postman na pasta raiz do projeto com exemplos de chamadas nas API's
+
 ## Acessar a API
 
 Após subir os containers do docker, a api ficará disponivel em:
