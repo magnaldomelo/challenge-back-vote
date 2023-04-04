@@ -37,8 +37,6 @@ public class VoteServiceImpl implements VoteService {
     @Autowired
     private UsersService usersService;
 
-    private final static String ABLE_TO_VOTE = "ABLE_TO_VOTE";
-
     @Override
     public Vote saveVote(VoteRequest voteRequest) {
         var answer = answerFromVoteRequest(voteRequest.getAnswer());
@@ -86,15 +84,7 @@ public class VoteServiceImpl implements VoteService {
     }
 
     private void eligibleToVote(String cpf){
-        try{
-            var usersResultEnum = usersService.validCpf(cpf);
-
-            if(ABLE_TO_VOTE.equals(UsersResultEnum.valueOf(usersResultEnum.getValue().toString()))){
-                throw new BusinessException("CPF '" + cpf + "' is unable to vote.");
-            }
-        }catch (Exception e){
-            throw new BusinessException("CPF '" + cpf + "' is unable to vote.");
-        }
+        this.usersService.validCpf(cpf);
     }
 
     private Answer answerFromVoteRequest(String answer){
@@ -104,7 +94,4 @@ public class VoteServiceImpl implements VoteService {
             throw new BusinessException("Invalid voting option");
         }
     }
-
-
-    //TODO implementar controle de voto; implementar salvar voto; implementar scheduler; implementar fila
 }

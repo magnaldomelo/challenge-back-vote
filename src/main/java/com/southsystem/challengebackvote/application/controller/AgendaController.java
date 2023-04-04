@@ -3,13 +3,11 @@ package com.southsystem.challengebackvote.application.controller;
 import com.southsystem.challengebackvote.domain.model.internal.request.AgendaRequest;
 import com.southsystem.challengebackvote.domain.model.internal.response.AgendaResponse;
 import com.southsystem.challengebackvote.domain.service.AgendaService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +22,8 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @Slf4j
 @RestController
-@RequestMapping("agenda")
+@RequestMapping("/api/v1/agenda")
+@Api(value = "agenda")
 @AllArgsConstructor
 public class AgendaController {
 

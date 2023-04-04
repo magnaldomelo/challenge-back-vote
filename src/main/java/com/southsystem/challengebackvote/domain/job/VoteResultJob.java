@@ -1,10 +1,9 @@
-package com.southsystem.challengebackvote.domain.service.impl;
+package com.southsystem.challengebackvote.domain.job;
 
 import com.southsystem.challengebackvote.domain.model.internal.Section;
 import com.southsystem.challengebackvote.domain.service.MessagingService;
 import com.southsystem.challengebackvote.domain.service.SectionService;
-import com.southsystem.challengebackvote.domain.service.VoteResult;
-import com.southsystem.challengebackvote.domain.service.VoteResultService;
+import com.southsystem.challengebackvote.domain.service.VoteService;
 import com.southsystem.challengebackvote.infrastructure.repository.SectionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +19,24 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class VoteResultImpl implements VoteResult {
+public class VoteResultJob {
 
     @Autowired
     private SectionRepository sectionRepository;
 
     @Autowired
-    private VoteResultService voteResultService;
-
-    @Autowired
     private MessagingService messagingService;
 
-    @Scheduled(fixedDelay = 1000)
-    @Override
+    @Scheduled(fixedDelay = 60000)
     public void closeSectionAndSendVoteResult() {
         var sectionsNotExpiredAndNotClosed = getSectionExpiredAndNotClosed();
 
         sectionsNotExpiredAndNotClosed.forEach(
                 section -> {
-                    var messagingResult = this.voteResultService.getMessagingResult(section.getId());
+                    var messagingResult = this.messagingService.getMessagingResult(section.getId());
 
                     if(Objects.nonNull(messagingResult)){
                         this.messagingService.send(messagingResult);
-                        System.out.println("messagingResult: " + messagingResult.toString());
                         section.setCloused(true);
                         sectionRepository.save(section);
                     }
