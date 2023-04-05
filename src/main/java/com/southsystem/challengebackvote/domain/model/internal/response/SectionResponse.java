@@ -2,12 +2,14 @@ package com.southsystem.challengebackvote.domain.model.internal.response;
 
 import com.southsystem.challengebackvote.domain.model.internal.Agenda;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
