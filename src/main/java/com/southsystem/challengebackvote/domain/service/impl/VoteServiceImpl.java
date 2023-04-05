@@ -39,20 +39,24 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public Vote saveVote(VoteRequest voteRequest) {
+        var cpfNoSpecialCharacters = voteRequest.getCpf().replace(".", "")
+                .replace("-", "");
         var answer = answerFromVoteRequest(voteRequest.getAnswer());
 
-        checkExitsVoteBySection(voteRequest.getCpf(), voteRequest.getSectionId());
+        checkExitsVoteBySection(cpfNoSpecialCharacters, voteRequest.getSectionId());
         checkIsExpiredDate(voteRequest.getSectionId());
-        eligibleToVote(voteRequest.getCpf());
+        eligibleToVote(cpfNoSpecialCharacters);
 
 
         var vote = Vote.builder().sectionId(voteRequest.getSectionId()).answer(answer).build();
         var voteSaved = this.voteRepository.insert(vote);
 
-        if(Objects.nonNull(voteSaved)){
-            this.voteControlService.saveVoteControl(VoteControlDto.builder()
-                    .cpf(voteRequest.getCpf()).sectionId(voteRequest.getSectionId()).build());
+        if(Objects.isNull(voteSaved)){
+            throw new BusinessException("Error trying to save vote");
         }
+
+        this.voteControlService.saveVoteControl(VoteControlDto.builder().cpf(cpfNoSpecialCharacters)
+                .sectionId(voteRequest.getSectionId()).build());
 
         return voteSaved;
     }
