@@ -38,7 +38,7 @@ public class SectionServiceImpl implements SectionService {
     @Override
     public Section saveSection(SectionRequest sectionRequest) {
         var agenda = agendaService.getAgendaById(sectionRequest.getAgendaId());
-        var minutesToFinish = Objects.isNull(sectionRequest.getMinutesToFinish()) ?
+       var minutesToFinish = Objects.isNull(sectionRequest.getMinutesToFinish()) ?
                 defaultMinutesToFinish : sectionRequest.getMinutesToFinish();
 
         var sectionSearch = sectionRepository
@@ -52,7 +52,8 @@ public class SectionServiceImpl implements SectionService {
                 .agenda(agenda)
                 .minutesToFinish(minutesToFinish)
                 .cloused(false)
-                .expiration(Instant.now(Clock.system(ZoneId.of("America/Sao_Paulo"))).plusSeconds(minutesToFinish * 60))
+                .expiration(Instant.now(Clock.system(ZoneId.of("America/Sao_Paulo")))
+                        .plusSeconds(minutesToFinish * 60))
                 .build();
 
         return this.sectionRepository.insert(section);
@@ -82,7 +83,8 @@ public class SectionServiceImpl implements SectionService {
                 defaultMinutesToFinish : sectionRequest.getMinutesToFinish();
 
         section.setMinutesToFinish(minutesToFinish);
-        section.setExpiration(Instant.now(Clock.system(ZoneId.of("America/Sao_Paulo"))).plusSeconds(minutesToFinish * 60));
+        section.setExpiration(Instant.now(Clock.system(ZoneId.of("America/Sao_Paulo")))
+                .plusSeconds(minutesToFinish * 60));
 
         if(Objects.nonNull(agenda)){
             section.setAgenda(agenda);
