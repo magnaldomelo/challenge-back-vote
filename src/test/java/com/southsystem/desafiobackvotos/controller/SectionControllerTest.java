@@ -81,7 +81,7 @@ public class SectionControllerTest {
     @Test
     public void createNewSectionSuccess() throws URISyntaxException {
         sectionDataFake.setId(new ObjectId().toHexString());
-        Mockito.when(sectionService.saveSection(this. sectionRequestDataFake)).thenReturn(sectionDataFake);
+        Mockito.when(sectionService.saveSection(sectionRequestDataFake)).thenReturn(sectionDataFake);
         ResponseEntity<?> response = sectionController.save(sectionRequestDataFake);
 
         assertEquals(response.getStatusCode(), HttpStatus.CREATED);
