@@ -91,6 +91,9 @@ OBS: Por default, o endereço para acesso ao Container da Aplicação é o local
 	Considerando que a aplicação possui uma Feature para emisão do resultado da Pauta processada de forma Assíncrona, após a execução do Teste de Carga,
 	talvés seja necessário aguardar alguns instantes até que o Job seja processado, inserindo os dados na tabela "messaging_result", o que simula o envio do resultado.
 	Foi disponibilizada também uma API para consulta do resultado de forma Síncrona.
+	Excepcionalmente para o teste de carga, o horário de expiração da Seção é alterado para reduzir o tempo de espera da emissão do resultado. Portanto, o valor
+	consigurado no momento da criação da Seção, é alterado para a hora atual. 
+	Para as chamadas Sincronas, a hora de expiração obedece o vamor informado no Request.
 
 #### Tarefa Bônus 4 - Versionamento da API
     O versionamento da API foi devinido por URL. Por ser uma padrão de mercado e de fácil visualização.
