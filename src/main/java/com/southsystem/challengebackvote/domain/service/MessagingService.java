@@ -7,4 +7,5 @@ public interface MessagingService {
     MessagingResult save(MessagingResultDto messagingResultDto);
     void send(MessagingResult messagingResult);
     MessagingResult getMessagingResult(String sectionId);
+    MessagingResult getMessagingResult(String sectionId, Boolean closed);
 }

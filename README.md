@@ -85,7 +85,12 @@ OBS: Por default, o endereço para acesso ao Container da Aplicação é o local
     uma tabela chamada "messagingResult", que o armazenará após o encerramento da Seção.
 
 #### Tarefa Bônus 3 - Performance
-    Em desenvolvimento
+    Foi implementado um teste de performance desenvolvido com o JMetter 5.5.
+	Além do arquivo de projeto do JMetter, foi incluso um arquivo de dados com uma lista de CPF's para execução do teste.
+	Caso a URL da aplicação seja alterada, o parâmetro BASE_URL deve ser atualizado com o novo valor.
+	Considerando que a aplicação possui uma Feature para emisão do resultado da Pauta processada de forma Assíncrona, após a execução do Teste de Carga,
+	talvés seja necessário aguardar alguns instantes até que o Job seja processado, inserindo os dados na tabela "messaging_result", o que simula o envio do resultado.
+	Foi disponibilizada também uma API para consulta do resultado de forma Síncrona.
 
 #### Tarefa Bônus 4 - Versionamento da API
     O versionamento da API foi devinido por URL. Por ser uma padrão de mercado e de fácil visualização.

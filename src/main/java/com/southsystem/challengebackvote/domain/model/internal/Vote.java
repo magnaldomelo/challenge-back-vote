@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document("vote")
 public class Vote implements Serializable {
 
     private static final long serialVersionUID = -366535154176877785L;

@@ -47,20 +47,20 @@ public class AgendaController {
         return ok(response);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id){
+    @GetMapping("/{agenda_id}")
+    public ResponseEntity<?> getById(@PathVariable("agenda_id") String id){
         var response = modelMapper.map(agendaService.getAgendaById(id), AgendaResponse.class);
         return ok(response);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody @Valid AgendaRequest agendaRequest){
+    @PutMapping("/{agenda_id}")
+    public ResponseEntity<?> update(@PathVariable("agenda_id") String id, @RequestBody @Valid AgendaRequest agendaRequest){
         var response = modelMapper.map(agendaService.update(id, agendaRequest), AgendaResponse.class);
         return ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") String id){
+    @DeleteMapping("/{agenda_id}")
+    public ResponseEntity<Void> delete(@PathVariable("agenda_id") String id){
         agendaService.deleteById(id);
         return ok().build();
     }

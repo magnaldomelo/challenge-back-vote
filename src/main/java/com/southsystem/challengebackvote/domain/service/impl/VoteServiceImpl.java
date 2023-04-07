@@ -1,6 +1,5 @@
 package com.southsystem.challengebackvote.domain.service.impl;
 
-import com.southsystem.challengebackvote.domain.model.external.UsersResultEnum;
 import com.southsystem.challengebackvote.domain.model.internal.Vote;
 import com.southsystem.challengebackvote.domain.model.internal.dto.VoteControlDto;
 import com.southsystem.challengebackvote.domain.model.internal.enums.Answer;

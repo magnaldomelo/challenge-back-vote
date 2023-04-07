@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document("messaging_result")
 public class MessagingResult implements Serializable {
 
     private static final long serialVersionUID = 1334493837508466981L;
