@@ -38,6 +38,7 @@ uma API REST:
 - Mockito 4.6.1
 - Kafka 3.1
 - Docker 20.10.23
+- JMetter 5.5
 
 ## Requisitos
 - Maven 3.6+
