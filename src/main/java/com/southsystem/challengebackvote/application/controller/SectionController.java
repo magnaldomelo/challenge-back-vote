@@ -48,20 +48,26 @@ public class SectionController {
         return ok(response);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id){
+    @GetMapping("/{section_id}")
+    public ResponseEntity<?> getById(@PathVariable("section_id") String id){
         var response = modelMapper.map(this.sectionService.getSectionById(id), SectionResponse.class);
         return ok(response);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody @Valid SectionRequest sectionRequest){
+    @PutMapping("/{section_id}")
+    public ResponseEntity<?> update(@PathVariable("section_id") String id, @RequestBody @Valid SectionRequest sectionRequest){
         var response = modelMapper.map(this.sectionService.update(id, sectionRequest), SectionResponse.class);
         return ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") String id){
+    @PostMapping("/reset_expiration/{section_id}")
+    public ResponseEntity<?> resetExpiration(@PathVariable("section_id") String id){
+        this.sectionService.resetExpiration(id);
+        return ok().build();
+    }
+
+    @DeleteMapping("/{section_id}")
+    public ResponseEntity<Void> delete(@PathVariable("section_id") String id){
         this.sectionService.deleteById(id);
         return ok().build();
     }

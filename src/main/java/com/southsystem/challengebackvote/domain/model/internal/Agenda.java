@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document("agenda")
 public class Agenda implements Serializable {
 
     private static final long serialVersionUID = -8673141821239917606L;

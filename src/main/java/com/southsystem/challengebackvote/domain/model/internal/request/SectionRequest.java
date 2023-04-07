@@ -24,7 +24,6 @@ public class SectionRequest implements Serializable {
     @NotEmpty(message = VALID_AGENDA_ID_MESSAGE + "Name can not be empty")
     @NotBlank(message = VALID_AGENDA_ID_MESSAGE+ "Name can not be blank")
     private String agendaId;
-
     private Integer minutesToFinish;
     private Boolean cloused;
 

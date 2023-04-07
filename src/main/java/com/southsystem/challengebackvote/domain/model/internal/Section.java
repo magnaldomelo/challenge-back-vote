@@ -13,7 +13,7 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document("section")
 public class Section {
 
     @Id

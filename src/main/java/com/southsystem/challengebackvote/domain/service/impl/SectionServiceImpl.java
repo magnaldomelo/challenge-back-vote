@@ -102,4 +102,11 @@ public class SectionServiceImpl implements SectionService {
         var section = getSectionById(id);
         this.sectionRepository.deleteById(section.getId());
     }
+
+    @Override
+    public void resetExpiration(String id) {
+        var section = getSectionById(id);
+        section.setExpiration(Instant.now(Clock.system(ZoneId.of("America/Sao_Paulo"))));
+        this.sectionRepository.save(section);
+    }
 }

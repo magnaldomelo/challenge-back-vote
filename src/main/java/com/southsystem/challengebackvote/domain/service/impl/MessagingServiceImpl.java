@@ -1,6 +1,7 @@
 package com.southsystem.challengebackvote.domain.service.impl;
 
 import com.southsystem.challengebackvote.domain.model.internal.MessagingResult;
+import com.southsystem.challengebackvote.domain.model.internal.Section;
 import com.southsystem.challengebackvote.domain.model.internal.VoteResult;
 import com.southsystem.challengebackvote.domain.model.internal.dto.MessagingResultDto;
 import com.southsystem.challengebackvote.domain.model.internal.enums.Answer;
@@ -52,7 +53,22 @@ public class MessagingServiceImpl implements MessagingService {
             throw new BusinessException("Section still open");
         }
 
-        var votes = this.voteService.findBySectionId(sectionId);
+        return getResult(section);
+    }
+
+    @Override
+    public MessagingResult getMessagingResult(String sectionId, Boolean closed) {
+        if(closed){
+            throw new BusinessException("Section still open");
+        }
+
+        var section = this.sectionService.getSectionById(sectionId);
+
+        return getResult(section);
+    }
+
+    private MessagingResult getResult(Section section){
+        var votes = this.voteService.findBySectionId(section.getId());
 
         var voteResult = VoteResult.builder()
                 .yes(votes.stream().filter(vote -> vote.getAnswer().equals(Answer.SIM)).count())

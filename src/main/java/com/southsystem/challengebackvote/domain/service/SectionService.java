@@ -11,4 +11,5 @@ public interface SectionService {
     Section getSectionById(String id);
     Section update(String id, SectionRequest sectionRequest);
     void deleteById(String id);
+    void resetExpiration(String id);
 }

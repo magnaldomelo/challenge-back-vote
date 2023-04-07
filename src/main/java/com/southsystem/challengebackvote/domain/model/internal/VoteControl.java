@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
+@Document("vote_control")
 public class VoteControl implements Serializable {
 
     private static final long serialVersionUID = 4471858916274318982L;

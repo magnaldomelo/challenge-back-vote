@@ -2,17 +2,13 @@ package com.southsystem.desafiobackvotos.service;
 
 import com.southsystem.challengebackvote.domain.model.internal.Agenda;
 import com.southsystem.challengebackvote.domain.model.internal.Section;
-import com.southsystem.challengebackvote.domain.model.internal.request.AgendaRequest;
 import com.southsystem.challengebackvote.domain.model.internal.request.SectionRequest;
-import com.southsystem.challengebackvote.domain.model.internal.response.SectionResponse;
 import com.southsystem.challengebackvote.domain.service.AgendaService;
 import com.southsystem.challengebackvote.domain.service.impl.SectionServiceImpl;
 import com.southsystem.challengebackvote.infrastructure.exception.BusinessException;
 import com.southsystem.challengebackvote.infrastructure.exception.EntityNotFoundException;
-import com.southsystem.challengebackvote.infrastructure.repository.AgendaRepository;
 import com.southsystem.challengebackvote.infrastructure.repository.SectionRepository;
 import org.bson.types.ObjectId;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,8 +19,6 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -50,14 +44,10 @@ public class SectionServiceTest {
     @Mock
     private AgendaService agendaService;
 
-    @Mock
-    private AgendaRepository agendaRepository;
-
     private static final String AGENDA_NAME = "Teste1";
     private static final String AGENDA_ID = "642c1c51ff19cc787f8ec737";
 
     private static final String SECTION_ID = "642d87e1138a287f9833ecc6";
-
     private static final Boolean CLOUSED_TRUE = true;
     private static final Boolean CLOUSED_FALSE = false;
     private static final Integer MINUTES_TO_FINISH = 5;
