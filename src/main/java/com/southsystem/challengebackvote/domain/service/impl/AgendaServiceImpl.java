@@ -7,8 +7,11 @@ import com.southsystem.challengebackvote.infrastructure.exception.BadRequestExce
 import com.southsystem.challengebackvote.infrastructure.exception.BusinessException;
 import com.southsystem.challengebackvote.infrastructure.exception.EntityNotFoundException;
 import com.southsystem.challengebackvote.infrastructure.repository.AgendaRepository;
+import com.southsystem.challengebackvote.infrastructure.repository.SectionRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,9 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Autowired
     private AgendaRepository agendaRepository;
+
+    @Autowired
+    private SectionRepository sectionRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -58,7 +64,18 @@ public class AgendaServiceImpl implements AgendaService {
     public Agenda update(String id, AgendaRequest agendaRequest) {
         var agenda = this.getAgendaById(id);
         agenda.setName(agendaRequest.getName());
-        return this.agendaRepository.save(agenda);
+        var agendaUpdated = this.agendaRepository.save(agenda);
+
+        if(Objects.nonNull(agendaUpdated)){
+            var sectionsByAgendaId = this.sectionRepository.findByAgendaId(new ObjectId(id));
+
+            sectionsByAgendaId.forEach(section -> {
+                section.getAgenda().setName(agendaUpdated.getName());
+                this.sectionRepository.save(section);
+            });
+        }
+
+        return agendaUpdated;
     }
 
     @Override

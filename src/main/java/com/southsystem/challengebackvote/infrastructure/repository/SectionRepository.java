@@ -13,4 +13,7 @@ public interface SectionRepository extends MongoRepository<Section, String> {
 
     @Query("{'agenda._id': ?0, 'cloused': ?1}")
     List<Section> findByAgendaAndClosed(ObjectId objectId, Boolean cloused);
+
+    @Query("{'agenda._id': ?0}")
+    List<Section> findByAgendaId(ObjectId objectId);
 }
